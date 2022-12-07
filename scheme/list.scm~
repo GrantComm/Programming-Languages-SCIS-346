@@ -1,0 +1,39 @@
+#lang racket
+;; review car and cdr
+(car '(a (b c ) d e))
+(cdr ' (a (b c ) d e ))
+(cadr ' (a (b c) d e))
+(caadr '(a (b c) d e))
+(cadadr '(a (b c) d e))
+(define (list-length lst)
+(if (null? lst)
+0
+(+ 1 (list-length (cdr lst)))))
+(define myl '(9 8 7 6 5 4 3 2 1))
+(print myl)
+(newline)
+(print (list-length myl))
+(define ( mySum lst)
+(if (null? lst)
+0
+(+  (car lst) (mySum (cdr lst)))))
+(newline)
+(mySum myl)
+(define (revers lst)
+(if (null? lst)
+lst
+(append (revers (cdr lst)) (list (car lst)))))
+(revers myl)
+(define my2 '( 1 9 3 5 2 4 8 6 7 ))
+(print my2)
+(newline)
+(sort my2 <)
+(define (got-milk?  lst)
+(cond
+[(null?  lst) #f]
+[(eq?  'milk (car lst)) #t]
+[else (got-milk?  (cdr lst))]))
+(define milkLst '( Do you have some milk in your glass))
+(got-milk? milkLst)
+(define milk2 '(Do you have any water in your glass))
+(got-milk?  milk2)

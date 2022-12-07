@@ -1,0 +1,19 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-advanced-reader.ss" "lang")((modname quadratic) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #t #t none #f () #f)))
+(define (quadratic a b c)
+  (let ((determinant (- (* b b) (* 4 a c))))
+    (if (negative? determinant)
+        '()
+        (let ((a2 (+ a a)))
+          (if (zero? determinant)
+              (list (/ (- b) a2))
+              (let ((root (sqrt determinant)))
+                (list (/ (- root b) a2)
+                      (/ (- (- root) b) a2))))))))
+
+(quadratic 1 0 -25)
+(quadratic 1 2 12)
+(quadratic 1 8 16)
+(quadratic 2 16 32)
+(quadratic 2 1 3)
